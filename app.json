@@ -1,0 +1,11 @@
+{
+  "expo": {
+    "name": "Watchual",
+    "slug": "Watchual",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  },
+  "name": "Watchual"
+}
