@@ -81,7 +81,7 @@ const App = () => {
       console.log(newToken)
       const token = String(newToken)
       try {
-        // await AsyncStorage.setItem('userToken', token);
+        await AsyncStorage.setItem('userToken', token);
       } catch(e) {
         console.log(e);
       }

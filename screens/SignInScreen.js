@@ -1,11 +1,8 @@
 import React, {useContext} from 'react';
-import { View, Text, Button, StyleSheet, TextInput, TouchableOpacity} from 'react-native';
-import * as Animatable from 'react-native-animatable';
-import { useTheme } from '@react-navigation/native';
-import { User, Lock, CheckCircle, EyeOff, Eye, CheckSquare} from "react-native-feather";
-import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-import { faUserAlt, faCheckCircle, faBars, faSignOutAlt, faHome, faInfoCircle, faUserCircle, faVrCardboard, faShoppingCart, faAlignJustify } from '@fortawesome/free-solid-svg-icons';
-// import AsyncStorage from '@react-native-async-storage/async-storage';
+import { View, Text, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
+import { User, Lock, CheckCircle, EyeOff, Eye } from "react-native-feather";
+import { LinearGradient } from 'expo-linear-gradient';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 // import {UserContext} from '../App'
 import { AuthContext } from '../components/context';
 
@@ -83,7 +80,6 @@ const SignInScreen = ({navigation}) => {
         }) 
     };
 
-
     return (
       <View style={styles.container} >
         <View style={styles.header}>
@@ -110,9 +106,9 @@ const SignInScreen = ({navigation}) => {
             </View>
             <View>
                 <TouchableOpacity onPress={getToken}>
-                  <View colors={['#276891', '#1B4965']} style={styles.signIn}>
+                  <LinearGradient colors={['#276891', '#1B4965']} style={styles.signIn}>
                       <Text style={[styles.textSign, { color: 'white'}]}>Sign In</Text>
-                  </View>
+                  </LinearGradient>
                 </TouchableOpacity>
 
                 <TouchableOpacity onPress={()=>navigation.navigate('SignUpScreen')}style={styles.signUp}>

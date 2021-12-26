@@ -1,11 +1,9 @@
 
-import React, {useReducer, useContext, useState, useEffect, Component} from 'react'
+import React, {Component} from 'react'
 import { View, ActivityIndicator, ScrollView, FlatList, Text, Button, ImageBackground, StyleSheet, Image, Dimensions } from 'react-native';
 import DetailsScreen from './DetailsScreen';
 import 'url-search-params-polyfill';
-import { NativeRouter, Route, Link, match } from "react-router-native";
-import { User, Lock, CheckCircle, EyeOff, Eye, CheckSquare, ShoppingCart, Home} from "react-native-feather";
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import { NativeRouter,Routes, Route, Link, match } from "react-router-native";
 import ShopScreen from './ShopScreen'
 
 
@@ -62,7 +60,7 @@ export default class HomeScreen extends Component {
           />
           )}
         </View>
-        <Route path="/:id" render={props=><DetailsScreen {...props}/>} />
+       {/* <Routes><Route path="/:id" render={props=><DetailsScreen {...props}/>} /></Routes>  */}
       </NativeRouter>
     )
   }

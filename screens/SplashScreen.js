@@ -5,20 +5,17 @@ import {
     TouchableOpacity, 
     Dimensions,
     StyleSheet,
-    StatusBar,
-    Image
 } from 'react-native';
+
 import * as Animatable from 'react-native-animatable';
-// import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import { useTheme } from '@react-navigation/native';
-// import View from 'react-native-linear-gradient';
+import { LinearGradient } from 'expo-linear-gradient';
 
 const SplashScreen = ({navigation}) => {
     const { colors } = useTheme();
 
     return (
       <View style={styles.container}>
-          <StatusBar backgroundColor='#1B4965' hidden = {false} barStyle="light-content"/>
         <View style={styles.header}>
             <Animatable.Image 
                 animation="bounceIn"
@@ -39,13 +36,14 @@ const SplashScreen = ({navigation}) => {
             }]}>It's your time to shine!</Text>
             <Text style={styles.text}>Sign in with account</Text>
             <View style={styles.button}>
+
             <TouchableOpacity onPress={()=>navigation.navigate('SignInScreen')} style={styles.getStarted}>
-                <View
+                <LinearGradient
                     colors={['#276891', '#1B4965']}
                     style={styles.signIn}
                 >
                     <Text style={styles.textSign}>Get Started</Text>
-                </View>
+                </LinearGradient>
             </TouchableOpacity>
             </View>
         </Animatable.View>
@@ -109,7 +107,7 @@ const styles = StyleSheet.create({
       height: 40,
       justifyContent: 'center',
       alignItems: 'center',
-      borderRadius: 50,
+      borderRadius: 5,
       flexDirection: 'row'
   },
   textSign: {
