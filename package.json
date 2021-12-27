@@ -22,6 +22,7 @@
     "@react-navigation/native": "^6.0.6",
     "@react-navigation/stack": "^6.0.11",
     "expo": "~44.0.1",
+    "expo-linear-gradient": "~11.0.0",
     "expo-splash-screen": "~0.14.1",
     "expo-status-bar": "~1.2.0",
     "pm2": "^5.1.2",
@@ -42,7 +43,9 @@
     "react-native-webview": "^11.15.0",
     "react-navigation": "^4.4.4",
     "react-navigation-stack": "^2.10.4",
+    "react-redux": "^7.2.6",
     "react-router-native": "^6.2.1",
+    "redux": "^4.1.2",
     "url-search-params-polyfill": "^8.1.1"
   },
   "devDependencies": {

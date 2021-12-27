@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { View, Text, StyleSheet, TextInput, TouchableOpacity, } from 'react-native';
-import { LinearGradient } from 'expo-linear-gradient';
 import { User, Lock, CheckCircle, EyeOff, Eye, Mail, UserPlus} from "react-native-feather";
+import { LinearGradient } from 'expo-linear-gradient';
 
 const baseURL = "http://localhost:3000"
 
@@ -20,22 +20,6 @@ const SignUpScreen = ({navigation}) => {
       secureTextEntryConfirm: true
     })
 
-    const handleUsernameChange = (val) => {
-      if (val.length > 0) {
-        setUserInfo({
-          ...userInfo,
-          username: val,
-          userNameInputStatus: true
-         })
-      } else {
-        setUserInfo({
-          ...userInfo,
-          usernname: val,
-          userNameInputStatus: false
-         })
-      }
-    }
-
     const handleNameChange = (val) => {
       if (val.length > 0) {
         setUserInfo({
@@ -48,6 +32,22 @@ const SignUpScreen = ({navigation}) => {
           ...userInfo,
           name: val,
           nameInputStatus: false
+         })
+      }
+    }
+
+    const handleUsernameChange = (val) => {
+      if (val.length > 0) {
+        setUserInfo({
+          ...userInfo,
+          username: val,
+          userNameInputStatus: true
+         })
+      } else {
+        setUserInfo({
+          ...userInfo,
+          usernname: val,
+          userNameInputStatus: false
          })
       }
     }
@@ -122,7 +122,6 @@ const SignUpScreen = ({navigation}) => {
             <Text style={styles.text_header}>Register!</Text>
         </View>
         <View style={styles.footer}>
-
             <Text style={styles.text_footer}>Name</Text>
             <View>
               <View style={styles.username}>
@@ -194,9 +193,7 @@ const SignUpScreen = ({navigation}) => {
                     }]}>Sign In</Text>
                 </TouchableOpacity>
             </View>
-            
-          </View>
-        
+        </View>
       </View>
     );
   }

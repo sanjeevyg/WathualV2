@@ -3,8 +3,6 @@ import 'url-search-params-polyfill';
 import { NativeRouter, Route, Link, match } from "react-router-native";
 import { View, ActivityIndicator, ScrollView, FlatList, Text, Button, ImageBackground, StyleSheet, Image, Dimensions, navigation } from 'react-native';
 import { User, Lock, CheckCircle, EyeOff, Eye, CheckSquare, ShoppingCart, Home, Watch, XSquare} from "react-native-feather";
-import HomeScreen from './HomeScreen'
-import ShopScreen from './ShopScreen'
 
 
 const DetailsScreen = (props) => {

@@ -20,7 +20,7 @@ const SignInScreen = ({navigation}) => {
       isValidPassword: true,
     })
 
-    const { signIn} = React.useContext(AuthContext);
+    const { signIn } = React.useContext(AuthContext);
 
     const handleUsernameChange = (val) => {
       if (val.length > 0) {
@@ -56,7 +56,7 @@ const SignInScreen = ({navigation}) => {
     const updateSecureTextEntry = (val) => {
       setUserInfo({
         ...userInfo,
-         password: val,
+        password: val,
         secureTextEntry: !userInfo.secureTextEntry
       })
     }
@@ -75,7 +75,6 @@ const SignInScreen = ({navigation}) => {
         body: JSON.stringify(userSignInfo)
       }).then(response => response.json())
         .then(result => {
-          console.log(result)
           signIn(result)
         }) 
     };

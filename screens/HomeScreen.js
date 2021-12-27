@@ -4,7 +4,6 @@ import { View, ActivityIndicator, ScrollView, FlatList, Text, Button, ImageBackg
 import DetailsScreen from './DetailsScreen';
 import 'url-search-params-polyfill';
 import { NativeRouter,Routes, Route, Link, match } from "react-router-native";
-import ShopScreen from './ShopScreen'
 
 
 let array = []
@@ -60,7 +59,7 @@ export default class HomeScreen extends Component {
           />
           )}
         </View>
-       {/* <Routes><Route path="/:id" render={props=><DetailsScreen {...props}/>} /></Routes>  */}
+       <Routes><Route path="/:id" render={props=><DetailsScreen {...props}/>} /></Routes> 
       </NativeRouter>
     )
   }

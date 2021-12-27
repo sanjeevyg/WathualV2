@@ -6,7 +6,7 @@ import { useTheme, Avatar, Title, Caption, Paragraph, Drawer, Text, TouchableRip
 import { DrawerContentScrollView, DrawerItem} from '@react-navigation/drawer';
 import { CardStyleInterpolators } from '@react-navigation/stack';
 import { AuthContext } from '../components/context';
-// import AsyncStorage from '@react-native-async-storage/async-storage';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import RootStackScreen from './RootStackScreen';
 import SplashScreen from './SplashScreen';
 

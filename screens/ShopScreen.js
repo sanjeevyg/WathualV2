@@ -1,11 +1,7 @@
 import * as React from 'react';
-import { View, Text, Button, StyleSheet, TextInput, TouchableOpacity, } from 'react-native';
-import * as Animatable from 'react-native-animatable';
-import { useTheme } from '@react-navigation/native';
-import LinearGradient from 'react-native-linear-gradient';
-import { User, Lock, CheckCircle, EyeOff, Eye, Mail, UserPlus} from "react-native-feather";
-import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-import { faUserAlt, faCheckCircle, faBars, faSignOutAlt,  faHome, faInfoCircle, faUserCircle, faVrCardboard, faShoppingCart, faAlignJustify } from '@fortawesome/free-solid-svg-icons';
+import { View, Text, StyleSheet, TextInput, TouchableOpacity, } from 'react-native';
+import { LinearGradient } from 'expo-linear-gradient';
+import {CheckCircle } from "react-native-feather";
 
 
 const baseURL = "http://localhost:3000"
