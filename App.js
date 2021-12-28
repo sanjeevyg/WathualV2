@@ -6,7 +6,7 @@ import {Provider as PaperProvider} from 'react-native-paper';
 import { View, ActivityIndicator } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import ProfileScreen from './screens/ProfileScreen';
-import RootStackScreen from './screens/RootStackScreen';
+import RootStackScreen from './navigator/RootStackScreen';
 import { AuthContext } from './components/context';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { CustomDarkTheme, CustomDefaultTheme } from './components/darkTheme';
@@ -14,7 +14,16 @@ import HomeScreen from './screens/HomeScreen';
 import DetailsScreen from './screens/DetailsScreen';
 import ShopScreen from './screens/ShopScreen';
 import ArScreen from './screens/ArScreen';
-import MainTabScreen from './screens/BottomTabScreen';
+import MainTabScreen from './navigator/XXXXXX';
+import BottomTabNavigator from './navigator/BottomTabNavigator'
+import MainStackNavigator from './navigator/MainStackNavigator';
+import DrawerNavigator from './navigator/DrawerNavigator';
+import TabDrawer from './navigator/PrivateStackScreen';
+
+// import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import PrivateStackScreen from './navigator/PrivateStackScreen';
+const Tab = createBottomTabNavigator();
 
 const Drawer = createDrawerNavigator();
 
@@ -107,14 +116,19 @@ const App = () => {
       <AuthContext.Provider value={authContext}>
         <NavigationContainer theme={theme} >
               {loginState.userToken !== null ? 
+              
               <Drawer.Navigator drawerContent={props => <DrawerContent {...props}/>}>
-                    <Drawer.Screen name="Home" component={HomeScreen} />
+                    <Drawer.Screen name="Home" component={BottomTabNavigator} />
                     <Drawer.Screen name="Details" component={DetailsScreen} />
-                    <Drawer.Screen name="Profile" component={ProfileScreen} />
-                    <Drawer.Screen name="Explore" component={ArScreen} />
-                    <Drawer.Screen name="Shop" component={ShopScreen} />
-                    <Drawer.Screen name="MainTab" component={MainTabScreen} />
-              </Drawer.Navigator> :
+                    <Drawer.Screen name="Profile" component={BottomTabNavigator} />
+                    <Drawer.Screen name="Explore" component={BottomTabNavigator} />
+                    <Drawer.Screen name="Shop" component={BottomTabNavigator} />
+                    <Drawer.Screen name="MainTab" component={BottomTabNavigator} />
+                    
+              </Drawer.Navigator> 
+              // <BottomTabNavigator/>
+              // <PrivateStackScreen/>
+              :
               <RootStackScreen/>}
         </NavigationContainer>
       </AuthContext.Provider>

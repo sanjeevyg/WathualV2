@@ -2,10 +2,10 @@ import * as React from 'react';
 
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
-import HomeScreen from './HomeScreen'
-import DetailsScreen from './DetailsScreen'
-import ArScreen from './ArScreen'
-import ShopScreen from './ShopScreen'
+import HomeScreen from '../screens/HomeScreen'
+import DetailsScreen from '../screens/DetailsScreen'
+import ArScreen from '../screens/ArScreen'
+import ShopScreen from '../screens/ShopScreen'
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faBars, faHome, faInfoCircle, faVrCardboard, faCreditCard } from '@fortawesome/free-solid-svg-icons';
 
