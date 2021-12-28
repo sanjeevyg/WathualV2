@@ -1,13 +1,16 @@
 
-import React, {Component} from 'react'
+import React, {Component} from 'react';
+import { useState, useEffect} from 'react';
 import { View, ActivityIndicator, ScrollView, FlatList, Text, Button, ImageBackground, StyleSheet, Image, Dimensions } from 'react-native';
 import DetailsScreen from './DetailsScreen';
 import 'url-search-params-polyfill';
-import { NativeRouter,Routes, Route, Link, match } from "react-router-native";
+import { NativeRouter,Routes,Route, Link} from "react-router-native";
+
 
 
 let array = []
 export default class HomeScreen extends Component {
+  
   _isMounted = false;
   constructor(props) {
     super(props);
@@ -18,6 +21,7 @@ export default class HomeScreen extends Component {
       isLoading: true
     };
   }
+
 
   componentDidMount() {
   
@@ -35,6 +39,7 @@ export default class HomeScreen extends Component {
   
   render() {
     const { data, isLoading } = this.state;
+
     return (
       <NativeRouter>
         <View style={styles.container}>  
@@ -45,25 +50,32 @@ export default class HomeScreen extends Component {
             renderItem={({ item }) => (    
               <ScrollView>    
                 <View style={styles.header}>
-                    <Link to={`/${item.id}`}>
                       <Image 
                         style={styles.logo}
                         source={{uri: item.image}}
                         resizeMode={'cover'}
-                      />
-                    </Link>
+                        
+                        />
                     <Text style={styles.text} >Price: ${item.price}</Text>
+                    <Button
+                        title="See Watch"
+                        onPress={() => this.props.navigation.navigate("Details", {id: item.id})}
+                    />
                 </View>
               </ScrollView>
             )}
           />
           )}
         </View>
-       <Routes><Route path="/:id" render={props=><DetailsScreen {...props}/>} /></Routes> 
+      
+       
       </NativeRouter>
     )
   }
   }
+
+  
+
 
 const {height} = Dimensions.get("screen");
 const height_logo = height * 0.30;
@@ -99,7 +111,7 @@ const styles = StyleSheet.create({
       width: height_logo,
       height: height_logo,
       marginLeft: 0,
-      marginTop: 25
+      marginTop: 30
   },
   title: {
       color: '#05375a',

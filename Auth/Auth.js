@@ -2,12 +2,12 @@ import React from 'react';
 import { CustomDarkTheme, CustomDefaultTheme} from '../components/darkTheme';
 
 export default function() {
-  // const AuthContext = React.createContext();
+  const AuthContext = React.createContext();
   const[isDarkTheme, setIsDarkTheme] = React.useState(true);
   const theme = isDarkTheme ? CustomDarkTheme : CustomDefaultTheme; 
   
 
-  const authContext = {
+  const authContext = ({
     signIn: async(newToken) => {
       console.log(newToken)
       const token = String(newToken)
@@ -32,7 +32,7 @@ export default function() {
     toggleTheme: () => {
       setIsDarkTheme( isDarkTheme => !isDarkTheme );
     }
-  };
+  });
 
 
   return [authContext, theme]

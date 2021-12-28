@@ -1,17 +1,13 @@
 import * as React from 'react';
 
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
-
 import { createStackNavigator } from '@react-navigation/stack';
-
 import HomeScreen from './HomeScreen'
 import DetailsScreen from './DetailsScreen'
 import ArScreen from './ArScreen'
 import ShopScreen from './ShopScreen'
-
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-import { faBars, faSignOutAlt,  faHome, faInfoCircle, faUserCircle, faVrCardboard, faShoppingCart, faAlignJustify, faCreditCard } from '@fortawesome/free-solid-svg-icons';
+import { faBars, faHome, faInfoCircle, faVrCardboard, faCreditCard } from '@fortawesome/free-solid-svg-icons';
 
 const Tab = createMaterialBottomTabNavigator();
 
@@ -79,7 +75,6 @@ export default MainTabScreen
 
 const HomeStack = createStackNavigator();
 const DetailsStack = createStackNavigator();
-
 const ArStack = createStackNavigator();
 const ShopStack = createStackNavigator();
 
@@ -123,7 +118,6 @@ const HomeStackScreen = ({navigation}) => (
           backgroundColor: '#276891'
         }, 
         headerTintColor: '#fff',
-        // inactiveColor: '#0A0A0A',
         headerTitleStyle: {
           fontWeight: 'bold'
         }

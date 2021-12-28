@@ -1,13 +1,11 @@
 import React, {useState, useEffect } from 'react';
 import 'url-search-params-polyfill';
-import { NativeRouter, Route, Link, match } from "react-router-native";
-import { View, ActivityIndicator, ScrollView, FlatList, Text, Button, ImageBackground, StyleSheet, Image, Dimensions, navigation } from 'react-native';
-import { User, Lock, CheckCircle, EyeOff, Eye, CheckSquare, ShoppingCart, Home, Watch, XSquare} from "react-native-feather";
+import { View, Text, StyleSheet, Image, Dimensions, navigation } from 'react-native';
+import {ShoppingCart, Watch, XSquare} from "react-native-feather";
 
 
 const DetailsScreen = (props) => {
-  console.log(props)
-  const id = props.match.params.id 
+  const id = props.route.params.id
   const [data, setData] = useState([]);
   const [price, setPrice] = useState([0]);
   const [count, setCount] = useState([0]);
@@ -23,9 +21,8 @@ const DetailsScreen = (props) => {
       }
     })
    return () => mounted = false;
-  })
+  }, [])
 
- 
   const addToCart = () => {
     console.log("test")
     setPrice(parseInt(price) + data.price)
@@ -36,7 +33,6 @@ const DetailsScreen = (props) => {
     setPrice(0)
     setCount(0)
   }
-  console.log(price, "price")
 
   return (    
       <View style={styles.container}> 

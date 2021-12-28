@@ -7,25 +7,26 @@ import { createMaterialBottomTabNavigator } from '@react-navigation/material-bot
 const Tab = createMaterialBottomTabNavigator();
 
 
-function ProfileTab() {
-  return (
-    <Tab.Navigator
-      // initialRouteName="Feed"
-      activeColor="#fff"
-      style={{ backgroundColor: '#fff' }}
-    >
-      <Tab.Screen
-        name="Feed"
-        component={ProfileStackScreen}
-      />
-    </Tab.Navigator>
-  );
-}
+// function ProfileTab() {
+//   return (
+//     <Tab.Navigator
+//       // initialRouteName="Feed"
+//       activeColor="#fff"
+//       style={{ backgroundColor: '#fff' }}
+//     >
+//       <Tab.Screen
+//         name="Feed"
+//         component={ProfileStackScreen}
+//       />
+//     </Tab.Navigator>
+//   );
+// }
 
 
-const ProfileScreen = ({navigation}) => {
+const ProfileScreen = ({navigation, route}) => {
+  console.log(route)
     return (
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' , color: '#2EC4B6'}} >
+      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center'}} >
         <Text>Profile Screen</Text> 
         <Button
             title="Explore"
@@ -36,26 +37,26 @@ const ProfileScreen = ({navigation}) => {
   }
 
 
-const ProfileStack = createStackNavigator();
-const ProfileStackScreen = ({navigation}) => (
-    <ProfileStack.Navigator screenOptions={{
-        headerStyle: {
-          backgroundColor: '#276891'
-        }, 
-        headerTintColor: '#fff',
-        headerTitleStyle: {
-          fontWeight: 'bold'
-        }, 
-        footerStyle: {
-          backgroundColor: '#276891'
-        }, 
-        headerTintColor: '#fff',
-        headerTitleStyle: {
-          fontWeight: 'bold'
-        }
-      }}>
-      <ProfileStack.Screen name="Profile" component={ProfileScreen} />
-    </ProfileStack.Navigator>
-  )
+// const ProfileStack = createStackNavigator();
+// const ProfileStackScreen = () => (
+//     <ProfileStack.Navigator screenOptions={{
+//         headerStyle: {
+//           backgroundColor: '#276891'
+//         }, 
+//         headerTintColor: '#fff',
+//         headerTitleStyle: {
+//           fontWeight: 'bold'
+//         }, 
+//         footerStyle: {
+//           backgroundColor: '#276891'
+//         }, 
+//         headerTintColor: '#fff',
+//         headerTitleStyle: {
+//           fontWeight: 'bold'
+//         }
+//       }}>
+//       <ProfileStack.Screen name="Profile" component={ProfileScreen} />
+//     </ProfileStack.Navigator>
+//   )
 
-  export default ProfileStackScreen
+  export default ProfileScreen

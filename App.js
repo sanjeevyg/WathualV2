@@ -9,18 +9,17 @@ import BottomTabScreen from './screens/BottomTabScreen';
 import ProfileScreen from './screens/ProfileScreen';
 import RootStackScreen from './screens/RootStackScreen';
 import { AuthContext } from './components/context';
-import authContext from './Auth/Auth';
-import theme from './Auth/Auth';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { CustomDarkTheme, CustomDefaultTheme } from './components/darkTheme';
-
-
+import HomeScreen from './screens/HomeScreen';
+import DetailsScreen from './screens/DetailsScreen';
+import ShopScreen from './screens/ShopScreen';
+import ArScreen from './screens/ArScreen';
 
 const Drawer = createDrawerNavigator();
-// console.log(authContext, "test")
 
 const App = () => {
-  const[isDarkTheme, setIsDarkTheme] = React.useState(true);
+   const[isDarkTheme, setIsDarkTheme] = React.useState(true);
   const theme = isDarkTheme ? CustomDarkTheme : CustomDefaultTheme; 
   const authContext = {
     signIn: async(newToken) => {
@@ -109,8 +108,11 @@ const App = () => {
         <NavigationContainer theme={theme} >
               {loginState.userToken !== null ? 
               <Drawer.Navigator drawerContent={props => <DrawerContent {...props}/>}>
-                    <Drawer.Screen name="MainDrawer" component={BottomTabScreen} />
+                    <Drawer.Screen name="Home" component={HomeScreen} />
+                    <Drawer.Screen name="Details" component={DetailsScreen} />
                     <Drawer.Screen name="Profile" component={ProfileScreen} />
+                    <Drawer.Screen name="Explore" component={ArScreen} />
+                    <Drawer.Screen name="Shop" component={ShopScreen} />
               </Drawer.Navigator> :
               <RootStackScreen/>}
         </NavigationContainer>

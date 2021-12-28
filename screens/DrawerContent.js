@@ -1,14 +1,10 @@
 import React, {useContext} from 'react';
 import { View, StyleSheet, ScrollView} from 'react-native';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-import { faBars, faAlignJustify, faIndent, faSignOutAlt, faEye, faHome, faInfoCircle, faUserCircle, faUserCog } from '@fortawesome/free-solid-svg-icons';
+import { faIndent, faSignOutAlt, faUserCircle, faUserCog } from '@fortawesome/free-solid-svg-icons';
 import { useTheme, Avatar, Title, Caption, Paragraph, Drawer, Text, TouchableRipple, Switch} from 'react-native-paper';
 import { DrawerContentScrollView, DrawerItem} from '@react-navigation/drawer';
-import { CardStyleInterpolators } from '@react-navigation/stack';
 import { AuthContext } from '../components/context';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import RootStackScreen from './RootStackScreen';
-import SplashScreen from './SplashScreen';
 
 export function DrawerContent(props) {
 
@@ -23,7 +19,7 @@ export function DrawerContent(props) {
 
     return(
         <View style={{flex: 1}}>
-            <DrawerContentScrollView { ... props}>
+            <DrawerContentScrollView { ...props }>
                 <View style={styles.DrawerContent}>
                     <View style={styles.userInfoSection}>
                         <View style={{flexDirection:'row',marginTop: 15}}>
@@ -42,21 +38,21 @@ export function DrawerContent(props) {
 
                     <DrawerItem 
                             icon= {({ color, size }) => (
-                            <FontAwesomeIcon icon={ faUserCircle} color={color} size={20} />
+                            <FontAwesomeIcon icon={ faUserCircle } color={ color } size={20} />
                         )}
                         label="Profile"
                         onPress={() => {props.navigation.navigate('Profile')}}
                     />
                     <DrawerItem 
                             icon= {({ color, size }) => (
-                            <FontAwesomeIcon icon={ faIndent} color={color} size={20} />
+                            <FontAwesomeIcon icon={ faIndent } color={color} size={20} />
                         )}
                         label="Preferences"
                         onPress={() => {}}
                     />  
                     <DrawerItem 
                             icon= {({ color, size }) => (
-                            <FontAwesomeIcon icon={ faUserCog} color= '#5D576B' size={20} />
+                            <FontAwesomeIcon icon={ faUserCog } color= '#5D576B' size={20} />
                         )}
                         label="Settings"
                         onPress={() => {}}
@@ -74,9 +70,10 @@ export function DrawerContent(props) {
                     </TouchableRipple>
                 </Drawer.Section>
 
-            </DrawerContentScrollView>
-            <Drawer.Section>
+            </DrawerContentScrollView >
+            <Drawer.Section style={styles.signOut}>
                 <DrawerItem 
+                    
                     icon= {({ color, size }) => (
                     <FontAwesomeIcon icon={ faSignOutAlt} color={color} size={20} />
                       )}
@@ -127,5 +124,8 @@ const styles = StyleSheet.create({
       paddingVertical: 12,
       paddingHorizontal: 16,
     },
+    signOut: {
+     marginBottom: 17
+    }
   });
     
