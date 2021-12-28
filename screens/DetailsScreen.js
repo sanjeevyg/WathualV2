@@ -11,7 +11,6 @@ const DetailsScreen = (props) => {
   const [count, setCount] = useState([0]);
 
   useEffect(() => {
-    console.log("hello world")
     let mounted = true;
     fetch(`http://localhost:3000/watches/${id}`)
     .then(response => response.json())
@@ -35,7 +34,7 @@ const DetailsScreen = (props) => {
   }
 
   return (    
-      <View style={styles.container}> 
+    <View style={styles.container}> 
         <View >
           <Image
             style={styles.logo}
@@ -68,15 +67,15 @@ const height_logo = height*.30;
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1.2, 
+    flex: .5, 
     backgroundColor: '#fff',
     borderTopColor: '#E5E5E5',
     borderTopWidth: 2,
-    paddingTop: 15,
-    marginTop: 0,
+    paddingTop: 200,
     flexDirection: 'row'
   },
   description: {
+    flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
     color: '#E5E5E5',
@@ -123,7 +122,7 @@ const styles = StyleSheet.create({
       width: height_logo,
       height: height_logo,
       marginLeft: -30,
-      marginTop: 30
+      marginTop: 20
   },
   title: {
       color: '#05375a',

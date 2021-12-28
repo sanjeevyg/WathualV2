@@ -1,11 +1,10 @@
 import 'react-native-gesture-handler';
-import React, {useReducer, useContext, useMemo, useState, useEffect} from 'react'
+import React, {useReducer, useEffect} from 'react'
 import { createDrawerNavigator} from '@react-navigation/drawer';
 import { DrawerContent } from './screens/DrawerContent';
 import {Provider as PaperProvider} from 'react-native-paper';
 import { View, ActivityIndicator } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
-import BottomTabScreen from './screens/BottomTabScreen';
 import ProfileScreen from './screens/ProfileScreen';
 import RootStackScreen from './screens/RootStackScreen';
 import { AuthContext } from './components/context';
@@ -15,12 +14,16 @@ import HomeScreen from './screens/HomeScreen';
 import DetailsScreen from './screens/DetailsScreen';
 import ShopScreen from './screens/ShopScreen';
 import ArScreen from './screens/ArScreen';
+import MainTabScreen from './screens/BottomTabScreen';
 
 const Drawer = createDrawerNavigator();
 
 const App = () => {
-   const[isDarkTheme, setIsDarkTheme] = React.useState(true);
+
+  const[isDarkTheme, setIsDarkTheme] = React.useState(false);
+
   const theme = isDarkTheme ? CustomDarkTheme : CustomDefaultTheme; 
+
   const authContext = {
     signIn: async(newToken) => {
       console.log(newToken)
@@ -48,12 +51,10 @@ const App = () => {
     }
   };
  
- 
   const initialLoginState = {
     isLoading: true,
     userToken: null,
   };
-
 
   const loginReducer = (prevState, action) => {
     switch( action.type ) {
@@ -78,8 +79,7 @@ const App = () => {
     }
   };
 
-  const [loginState, dispatch] = React.useReducer(loginReducer, initialLoginState);
-
+  const [loginState, dispatch] = useReducer(loginReducer, initialLoginState);
 
   useEffect(() => {
     setTimeout(async() => {
@@ -113,6 +113,7 @@ const App = () => {
                     <Drawer.Screen name="Profile" component={ProfileScreen} />
                     <Drawer.Screen name="Explore" component={ArScreen} />
                     <Drawer.Screen name="Shop" component={ShopScreen} />
+                    <Drawer.Screen name="MainTab" component={MainTabScreen} />
               </Drawer.Navigator> :
               <RootStackScreen/>}
         </NavigationContainer>

@@ -1,17 +1,9 @@
 
 import React, {Component} from 'react';
-import { useState, useEffect} from 'react';
 import { View, ActivityIndicator, ScrollView, FlatList, Text, Button, ImageBackground, StyleSheet, Image, Dimensions } from 'react-native';
-import DetailsScreen from './DetailsScreen';
-import 'url-search-params-polyfill';
-import { NativeRouter,Routes,Route, Link} from "react-router-native";
-
-
-
-let array = []
+import { NativeRouter } from "react-router-native";
+import { TouchableOpacity } from 'react-native-gesture-handler';
 export default class HomeScreen extends Component {
-  
-  _isMounted = false;
   constructor(props) {
     super(props);
 
@@ -22,10 +14,7 @@ export default class HomeScreen extends Component {
     };
   }
 
-
   componentDidMount() {
-  
-    this._isMounted = true;
     fetch('http://localhost:3000/watches')
       .then((response) => response.json())
       .then((json) => {
@@ -39,7 +28,6 @@ export default class HomeScreen extends Component {
   
   render() {
     const { data, isLoading } = this.state;
-
     return (
       <NativeRouter>
         <View style={styles.container}>  
@@ -49,33 +37,23 @@ export default class HomeScreen extends Component {
             keyExtractor={({image}) => image}
             renderItem={({ item }) => (    
               <ScrollView>    
-                <View style={styles.header}>
-                      <Image 
+                <TouchableOpacity style={styles.header} onPress={() => this.props.navigation.navigate("Details", {id: item.id})}>
+                    <Image 
                         style={styles.logo}
                         source={{uri: item.image}}
                         resizeMode={'cover'}
-                        
-                        />
+                      />
                     <Text style={styles.text} >Price: ${item.price}</Text>
-                    <Button
-                        title="See Watch"
-                        onPress={() => this.props.navigation.navigate("Details", {id: item.id})}
-                    />
-                </View>
+                </TouchableOpacity>
               </ScrollView>
             )}
           />
           )}
         </View>
-      
-       
       </NativeRouter>
     )
   }
-  }
-
-  
-
+}
 
 const {height} = Dimensions.get("screen");
 const height_logo = height * 0.30;
