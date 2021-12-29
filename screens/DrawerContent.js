@@ -37,21 +37,21 @@ export function DrawerContent(props) {
                 <Drawer.Section style={styles.drawerSection}>
 
                     <DrawerItem 
-                            icon= {({ color, size }) => (
+                            icon= {({ color}) => (
                             <FontAwesomeIcon icon={ faUserCircle } color={ color } size={20} />
                         )}
                         label="Profile"
                         onPress={() => {props.navigation.navigate('Profile')}}
                     />
                     <DrawerItem 
-                            icon= {({ color, size }) => (
+                            icon= {({ color}) => (
                             <FontAwesomeIcon icon={ faIndent } color={color} size={20} />
                         )}
                         label="Preferences"
                         onPress={() => {}}
                     />  
                     <DrawerItem 
-                            icon= {({ color, size }) => (
+                            icon= {({ color}) => (
                             <FontAwesomeIcon icon={ faUserCog } color= '#5D576B' size={20} />
                         )}
                         label="Settings"

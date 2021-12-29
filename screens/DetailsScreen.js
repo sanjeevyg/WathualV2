@@ -1,6 +1,6 @@
 import React, {useState, useEffect } from 'react';
 import 'url-search-params-polyfill';
-import { View, Text, StyleSheet, Image, Dimensions, navigation } from 'react-native';
+import { View, Text, StyleSheet, Image, Dimensions, navigation, Button } from 'react-native';
 import {ShoppingCart, Watch, XSquare} from "react-native-feather";
 
 
@@ -23,7 +23,6 @@ const DetailsScreen = (props) => {
   }, [])
 
   const addToCart = () => {
-    console.log("test")
     setPrice(parseInt(price) + data.price)
     setCount(parseInt(count) + 1)
   }
@@ -57,7 +56,11 @@ const DetailsScreen = (props) => {
               <XSquare style={styles.x} stroke="#05375a" fill="#fff" width={18} height={18} onPress={() => emptyCard()}/>
             </View>
           </View>
-    </View>
+          <Button
+            title="Home"
+            onPress={() => {props.navigation.navigate('Home')}}
+          />
+          </View>
   )
 }
 

@@ -37,26 +37,26 @@ const ProfileScreen = ({navigation, route}) => {
   }
 
 
-// const ProfileStack = createStackNavigator();
-// const ProfileStackScreen = () => (
-//     <ProfileStack.Navigator screenOptions={{
-//         headerStyle: {
-//           backgroundColor: '#276891'
-//         }, 
-//         headerTintColor: '#fff',
-//         headerTitleStyle: {
-//           fontWeight: 'bold'
-//         }, 
-//         footerStyle: {
-//           backgroundColor: '#276891'
-//         }, 
-//         headerTintColor: '#fff',
-//         headerTitleStyle: {
-//           fontWeight: 'bold'
-//         }
-//       }}>
-//       <ProfileStack.Screen name="Profile" component={ProfileScreen} />
-//     </ProfileStack.Navigator>
-//   )
+const ProfileStack = createStackNavigator();
+const ProfileStackScreen = () => (
+    <ProfileStack.Navigator screenOptions={{
+        headerStyle: {
+          backgroundColor: '#276891'
+        }, 
+        headerTintColor: '#fff',
+        headerTitleStyle: {
+          fontWeight: 'bold'
+        }, 
+        footerStyle: {
+          backgroundColor: '#276891'
+        }, 
+        headerTintColor: '#fff',
+        headerTitleStyle: {
+          fontWeight: 'bold'
+        }
+      }}>
+      <ProfileStack.Screen name="Profile" component={ProfileScreen} />
+    </ProfileStack.Navigator>
+  )
 
-  export default ProfileScreen
+  export default ProfileStackScreen
