@@ -1,22 +1,14 @@
 import 'react-native-gesture-handler';
 import React, {useReducer, useEffect} from 'react'
-import { createDrawerNavigator} from '@react-navigation/drawer';
 import {Provider as PaperProvider} from 'react-native-paper';
 import { View, ActivityIndicator } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
-import RootStackScreen from './navigator/RootStackScreen';
 import { AuthContext } from './components/context';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { CustomDarkTheme, CustomDefaultTheme } from './components/darkTheme';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import PrivateStackScreen from './navigator/PrivateStackScreen';
-import DrawerNavigator from './navigator/DrawerNavigator'
-import ProfileScreen from './screens/ProfileScreen'
-import DetailsScreen from './screens/DetailsScreen';
-import BottomTabNavigator from './navigator/BottomTabNavigator';
+import DrawerNavigator from './navigator/DrawerNavigator';
+import RootStackScreen from './navigator/RootStackScreen'
 
-const Tab = createBottomTabNavigator();
-const Drawer = createDrawerNavigator();
 
 const App = () => {
 
@@ -79,6 +71,8 @@ const App = () => {
     }
   };
 
+  // console.log(initialLoginState.userToken)
+
   const [loginState, dispatch] = useReducer(loginReducer, initialLoginState);
 
   useEffect(() => {
@@ -92,7 +86,7 @@ const App = () => {
       }
       dispatch({ type: 'RETRIEVE_TOKEN', token: userToken });
     }, 1000);
-  }, []);
+  }, [loginState.userToken]);
 
   if( loginState.isLoading ) {
     return(

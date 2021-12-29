@@ -1,24 +1,47 @@
 import * as React from 'react';
-
-import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
-import { HomeStackScreen, ArStackScreen, ShopStackScreen } from './MainStackNavigator'
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { HomeStackScreen, ArStackScreen, ShopStackScreen, ProfileStackScreen } from './MainStackNavigator'
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-import { faHome, faVrCardboard, faCreditCard } from '@fortawesome/free-solid-svg-icons';
+import { faHome, faVrCardboard, faCreditCard,faUserCircle } from '@fortawesome/free-solid-svg-icons';
 
-
-const Tab = createMaterialBottomTabNavigator();
+const Tab = createBottomTabNavigator();
 
 export default function BottomTabNavigator() {
   return (
-    <Tab.Navigator>
+    <Tab.Navigator
+      screenOptions={{
+        "tabBarActiveTintColor": "white",
+        "tabBarShowLabel": false,
+        "tabBarStyle": [
+          {
+            "display": "flex",
+            "backgroundColor": "#276891",
+            "height": 90,
+           
+          }, null]
+       }
+      }
+    >
     <Tab.Screen
       name="Home"
       component={HomeStackScreen}
       options={{
+        headerShown: false,
         tabBarLabel: 'Home',
-        tabBarColor: '#276891',
         tabBarIcon: ({ color, size }) => (
-          <FontAwesomeIcon icon={ faHome} color={color} size={20} />
+          <FontAwesomeIcon icon={ faHome} color={color} size={25} />
+        ),
+      }}
+    />
+
+    <Tab.Screen
+      name="Profile"
+      component={ProfileStackScreen}
+      options={{
+        headerShown: false,
+        tabBarLabel: 'Profile',
+        tabBarIcon: ({ color, size }) => (
+          <FontAwesomeIcon icon={ faUserCircle} color={color} size={25} />
         ),
       }}
     />
@@ -27,10 +50,10 @@ export default function BottomTabNavigator() {
       name="Shop"
       component={ShopStackScreen}
       options={{
+        headerShown: false,
         tabBarLabel: 'Pay',
-        tabBarColor: '#276891',
         tabBarIcon: ({ color, size }) => (
-          <FontAwesomeIcon icon={ faCreditCard} color={color} size={20} />
+          <FontAwesomeIcon icon={ faCreditCard} color={color} size={25} />
         ),
       }}
     />
@@ -38,12 +61,13 @@ export default function BottomTabNavigator() {
       name="Explore"
       component={ArStackScreen}
       options={{
+        headerShown: false,
         tabBarLabel: 'Try It',
-        tabBarColor: '#276891',
         tabBarIcon: ({ color, size }) => (
-          <FontAwesomeIcon icon={ faVrCardboard} color={color}  size={20} />
+          <FontAwesomeIcon icon={ faVrCardboard} color={color}  size={25} />
         ),
       }}
     />
   </Tab.Navigator>
 )}
+

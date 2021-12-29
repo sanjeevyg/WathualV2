@@ -1,6 +1,6 @@
 
 import React, {Component} from 'react';
-import { View, ActivityIndicator, ScrollView, FlatList, Text, Button, ImageBackground, StyleSheet, Image, Dimensions } from 'react-native';
+import { View, ActivityIndicator, ScrollView, FlatList, Text, StyleSheet, Image, Dimensions } from 'react-native';
 import { NativeRouter } from "react-router-native";
 import { TouchableOpacity } from 'react-native-gesture-handler';
 export default class HomeScreen extends Component {

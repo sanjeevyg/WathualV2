@@ -5,12 +5,13 @@ import { faBars, faHome, faInfoCircle, faVrCardboard, faCreditCard } from '@fort
 import HomeScreen from '../screens/HomeScreen';
 import ShopScreen from '../screens/ShopScreen';
 import ArScreen from '../screens/ArScreen';
+import ProfileStackScreen from '../screens/ProfileScreen';
 
 
 const HomeStack = createStackNavigator();
-const DetailsStack = createStackNavigator();
 const ArStack = createStackNavigator();
 const ShopStack = createStackNavigator();
+const ProfileStack = createStackNavigator();
 
 const HomeStackScreen = ({navigation}) => (
     <HomeStack.Navigator screenOptions={{
@@ -31,20 +32,6 @@ const HomeStackScreen = ({navigation}) => (
       />
     </HomeStack.Navigator>
   )
-  
-//   const DetailsStackScreen = ({navigation}) => (
-//     <DetailsStack.Navigator screenOptions={{
-//         headerStyle: {
-//           backgroundColor: '#276891'
-//         }, 
-//         headerTintColor: '#fff',
-//         headerTitleStyle: {
-//           fontWeight: 'bold'
-//         }
-//       }}>
-//       <DetailsStack.Screen name="Details" component={DetailsScreen} options={{title: 'Watch Specifications'}} />
-//     </DetailsStack.Navigator>
-//   )
 
   const ArStackScreen = ({navigation}) => (
     <ArStack.Navigator screenOptions={{
@@ -74,4 +61,4 @@ const HomeStackScreen = ({navigation}) => (
     </ShopStack.Navigator>
   )
 
-  export { HomeStackScreen, ArStackScreen, ShopStackScreen };
+  export { HomeStackScreen, ArStackScreen, ShopStackScreen, ProfileStackScreen };

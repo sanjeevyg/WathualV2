@@ -1,15 +1,16 @@
 import React, {useState, useEffect } from 'react';
 import 'url-search-params-polyfill';
-import { View, Text, StyleSheet, Image, Dimensions, navigation, Button } from 'react-native';
-import {ShoppingCart, Watch, XSquare} from "react-native-feather";
+import { View, Text, StyleSheet, Image, Dimensions, navigation, Button, TouchableOpacity } from 'react-native';
+import {Bold, ShoppingCart, Watch, XSquare} from "react-native-feather";
 
 
 const DetailsScreen = (props) => {
-  const id = props.route.params.id
   const [data, setData] = useState([]);
   const [price, setPrice] = useState([0]);
   const [count, setCount] = useState([0]);
 
+  const id = props.route.params.id
+  
   useEffect(() => {
     let mounted = true;
     fetch(`http://localhost:3000/watches/${id}`)
@@ -19,8 +20,8 @@ const DetailsScreen = (props) => {
         setData(result)
       }
     })
-   return () => mounted = false;
-  }, [])
+   
+  }, [id])
 
   const addToCart = () => {
     setPrice(parseInt(price) + data.price)
@@ -34,32 +35,42 @@ const DetailsScreen = (props) => {
 
   return (    
     <View style={styles.container}> 
-        <View >
-          <Image
-            style={styles.logo}
-            source={{uri: data.image}}
-          />
-          <View  style={styles.watchCount}>
-            <Text style={styles.cart}>{count}</Text>
-            <ShoppingCart style={styles.cart} stroke="#05375a" fill="#fff" width={35} height={35} onPress={() => addToCart()}/>
-            <Watch style={styles.cart} stroke="#05375a" fill="#fff" width={15} height={15}/>
+
+          <View style={styles.button}>
+            <Button 
+              title="Close"
+              onPress={() => {props.navigation.navigate('Home')}}
+            />
           </View>
-        </View>
+
+          <View style={styles.image}>
+          <TouchableOpacity onPress={() => addToCart()}>
+            <Image
+              style={styles.logo}
+              source={{uri: data.image}}
+            />
+          </TouchableOpacity>
+          </View>
+
+         
+
           <View style={styles.description}>
             <Text style={styles.firstText}>Price:${data.price}</Text>
             <Text style={styles.text}>Brand: {data.brand}</Text>
             <Text style={styles.text}>Dial Color: {data.dial_color}</Text>
             <Text style={styles.text}>Interchangeable Strap: {data.interchangeable_strap}</Text>
             <Text style={styles.text}>Case Material: {data.case_material}</Text>
-            <View style={styles.totalContainer}>
-              <Text style={styles.total}>Total: ${price}</Text>
-              <XSquare style={styles.x} stroke="#05375a" fill="#fff" width={18} height={18} onPress={() => emptyCard()}/>
-            </View>
           </View>
-          <Button
-            title="Home"
-            onPress={() => {props.navigation.navigate('Home')}}
-          />
+          <View style={styles.watchCount}>
+              <Text style={styles.cart}>{count}</Text>
+              <ShoppingCart onPress={() => addToCart()} style={styles.cart} stroke="#05375a" fill="#fff" width={35} height={35}/>
+              <Watch style={styles.watch} stroke="#05375a" fill="#fff" width={15} height={15}/>
+          </View>
+          <View style={styles.totalContainer}>
+            <Text style={styles.total}>Total: ${price}</Text>
+            <XSquare style={styles.x} stroke="#05375a" fill="#fff" width={18} height={18} onPress={() => emptyCard()}/>
+          </View>
+          
           </View>
   )
 }
@@ -70,100 +81,85 @@ const height_logo = height*.30;
 
 const styles = StyleSheet.create({
   container: {
-    flex: .5, 
-    backgroundColor: '#fff',
-    borderTopColor: '#E5E5E5',
-    borderTopWidth: 2,
-    paddingTop: 200,
-    flexDirection: 'row'
-  },
-  description: {
-    flex: 1,
-    justifyContent: 'center',
+    flex: 1, 
+    // backgroundColor: 'white',
+    justifyContent: 'flex-start',
     alignItems: 'center',
-    color: '#E5E5E5',
-    marginBottom: 50
-  }, 
-  header: {
-      flex: 4,
-      justifyContent: 'center',
-      alignItems: 'center'
+    flexDirection: 'column',
   },
-  totalContainer: {
-    marginTop: 100,
-    flexDirection: "row",
-    justifyContent: "center"
-  },
-  x:{
-    marginTop: 4,
-    marginLeft: 10
-  },
-  nav: {
-    flexDirection: "row",
-    justifyContent: "space-around"
-  },
-  cart: {
-    marginLeft: 10,
-    marginTop:50,
-  },
-  watchCount: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginTop: -40,
-    marginRight: 40
-  }, 
-  footer: {
-      flex: 1,
-      backgroundColor: '#fff',
-      borderTopLeftRadius: 30,
-      borderTopRightRadius: 30,
-      paddingVertical: 50,
-      paddingHorizontal: 30
-  },
-  logo: {
-      width: height_logo,
-      height: height_logo,
-      marginLeft: -30,
-      marginTop: 20
-  },
-  title: {
-      color: '#05375a',
-      fontSize: 30,
-      fontWeight: 'bold'
-  },
-  text: {
-      color: 'grey',
-      marginTop: 5,
-      marginLeft: -30
-  },
-  firstText: {
-      color: 'grey',
-      marginTop: 110,
-  
-      marginLeft: -30
-  },
-  total: {
-    color: '#05375a',
-    fontSize: 20,
+  image: {
+    flex: 1.7
   },
   button: {
-      alignItems: 'flex-end',
-      marginTop: 30
+    flex: .3,
+    // backgroundColor: "orange",
+    justifyContent: "center",
+    alignItems: "center",
+    color: "black",
+    marginTop: 50,
+    marginLeft: -300
   },
-  signIn: {
-      width: 150,
-      height: 40,
-      justifyContent: 'center',
-      alignItems: 'center',
-      borderRadius: 50,
-      flexDirection: 'row'
+  logo: {
+    flex: 1,
+    paddingTop: 0,
+    padding: 100
   },
-  textSign: {
-      color: 'white',
-      fontWeight: 'bold'
+  description: {
+    flex: .9,
+    justifyContent: "center",
+    alignItems: "center",
+    // backgroundColor: 'yellow',
+  },
+  watchCount: {
+    flex: .2,
+    flexDirection: "row",
+    marginTop: 20,
+    // backgroundColor: 'gold',
+    justifyContent: "center",
+    alignItems: "center"
+  }, 
+  totalContainer: {
+    flex: .2,
+    backgroundColor: "grey",
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+    marginTop: 10,
+    marginBottom: 200,
+    paddingLeft: 9,
+    paddingRight: 9,
+    borderRadius: 7,
+    fontSize: 20,
+  },
+  text: {
+    fontSize: 20,
+    color: 'grey',
+  },
+  firstText: {
+    fontSize: 20,
+    color: 'grey',
+    fontWeight: 'bold',
+    padding: 10,
+    fontStyle: "italic"
+  },
+  total: {
+    fontSize: 25,
+    color: 'white',
+  },
+  cart: {
+    fontSize: 20,
+    padding: 5,
   },
   watch: {
-    justifyContent: 'center',
+    padding: 14,
+    marginLeft: 7,
+    // backgroundColor: "blue"
+  },
+  x: {
+    padding: 15,
+    marginLeft: 5,
+    // backgroundColor: "red"
   }
+
+ 
 });

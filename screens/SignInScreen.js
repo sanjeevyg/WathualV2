@@ -22,6 +22,8 @@ const SignInScreen = ({navigation}) => {
 
     const { signIn } = React.useContext(AuthContext);
 
+    console.log(React.useContext(AuthContext))
+
     const handleUsernameChange = (val) => {
       if (val.length > 0) {
         setUserInfo({
