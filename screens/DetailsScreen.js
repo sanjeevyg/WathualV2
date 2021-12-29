@@ -39,7 +39,11 @@ const DetailsScreen = (props) => {
           <View style={styles.button}>
             <Button 
               title="Close"
-              onPress={() => {props.navigation.navigate('Home')}}
+              onPress={() => {
+                props.navigation.navigate('Home')
+                setPrice(0)
+                setCount(0)
+            }}
             />
           </View>
 
@@ -68,7 +72,7 @@ const DetailsScreen = (props) => {
           </View>
           <View style={styles.totalContainer}>
             <Text style={styles.total}>Total: ${price}</Text>
-            <XSquare style={styles.x} stroke="#05375a" fill="#fff" width={18} height={18} onPress={() => emptyCard()}/>
+            <XSquare style={styles.x} stroke="#ADA8B6" fill="#fff" width={18} height={18} onPress={() => emptyCard()}/>
           </View>
           
           </View>
@@ -82,7 +86,6 @@ const height_logo = height*.30;
 const styles = StyleSheet.create({
   container: {
     flex: 1, 
-    // backgroundColor: 'white',
     justifyContent: 'flex-start',
     alignItems: 'center',
     flexDirection: 'column',
@@ -92,12 +95,11 @@ const styles = StyleSheet.create({
   },
   button: {
     flex: .3,
-    // backgroundColor: "orange",
     justifyContent: "center",
     alignItems: "center",
-    color: "black",
     marginTop: 50,
-    marginLeft: -300
+    marginLeft: -300,
+    fontWeight: "bold"
   },
   logo: {
     flex: 1,
@@ -108,13 +110,11 @@ const styles = StyleSheet.create({
     flex: .9,
     justifyContent: "center",
     alignItems: "center",
-    // backgroundColor: 'yellow',
   },
   watchCount: {
     flex: .2,
     flexDirection: "row",
     marginTop: 20,
-    // backgroundColor: 'gold',
     justifyContent: "center",
     alignItems: "center"
   }, 
@@ -153,13 +153,9 @@ const styles = StyleSheet.create({
   watch: {
     padding: 14,
     marginLeft: 7,
-    // backgroundColor: "blue"
   },
   x: {
     padding: 15,
     marginLeft: 5,
-    // backgroundColor: "red"
   }
-
- 
 });
