@@ -1,5 +1,5 @@
 # Watchual
-![Alt Text](https://media.giphy.com/media/vFKqnCdLPNOKc/giphy.gif)
+<img width="841" alt="Screen Shot 2022-01-27 at 12 08 18 PM" src="https://user-images.githubusercontent.com/63537688/151408461-dbdbc7ae-f9e5-467c-8154-b09dd3ee3305.png">
 
 **An app to identify the different breeds of dog based on uploaded photo or captured photo**
 
