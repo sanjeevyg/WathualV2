@@ -1,4 +1,5 @@
 # Watchual!
+![Wathual](https://user-images.githubusercontent.com/63537688/151417328-b77b4e27-8636-4e68-93b2-a39f17bfc84d.gif)
 
 **An mobile shopping app for watches!**
 
